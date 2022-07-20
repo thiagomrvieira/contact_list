@@ -1,0 +1,12 @@
+<% if flash[:user_errors] %>
+    <div class= "">
+        <div class="alert alert-danger">
+            Oops <%= pluralize(flash[:user_errors].count, 'erro', 'erros')%>
+            <ul>
+                <%= flash[:user_errors].each do |msg| %>
+                    <li> <%= msg %> </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+<% end %>
