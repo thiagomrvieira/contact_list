@@ -7,4 +7,6 @@ class User < ApplicationRecord
     validates :password, length: { maximum:6 }
     validates :email, presence: true, length: { maximum:255 },
                                       uniqueness: { case_sensitive: true }
+
+    has_many :contacts
 end
