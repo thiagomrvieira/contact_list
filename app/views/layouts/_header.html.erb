@@ -5,12 +5,29 @@
                 <li class="nav-item">
                     <%= link_to "Contact list", root_path, class:"nav-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to  "Nova conta", new_user_path, class:"nav-link" %>
-                </li>
+                <% if !user_signed_in?  %>
+                    <li class="nav-item">
+                        <%= link_to  "Nova conta", new_user_path, class:"nav-link" %>
+                    </li>
+                <% end %>
+                
             </ul>
-            <div class="d-flex">
-                <button class="btn btn-outline-success" type="submit">Entrar</button>
+            <div>
+                <% if !user_signed_in?  %>
+                    <%= link_to  "Entrar", entrar_path %>
+                <% else %>
+                    Bem vindo <%= current_user.name %>
+                        <p>
+                            <%= link_to  "Minha página", current_user %>
+                        </p>
+                        <p>
+                            <%= link_to  "Editar", '#' %>
+                        </p>
+                        <li class="divider" role="separator">
+                        <p>
+                            <%= link_to "Sair", sair_path, method: :delete %>
+                        </p>
+                <% end %>
             </div>
         </div>
     </div>
